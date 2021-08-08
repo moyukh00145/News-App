@@ -33,6 +33,7 @@
             android:text="Name" />
 
         <ImageView
+            android:id="@+id/drop_button"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -56,6 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:id="@+id/option_lay"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <ImageView
