@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class NewsAdapter(val context: Context,val news:ArrayList<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(val context: Context?,val news:ArrayList<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
     inner class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -70,7 +70,9 @@ class NewsAdapter(val context: Context,val news:ArrayList<News>) : RecyclerView.
 
         }
         else{
-            Glide.with(context).load(news.get(position).image_url).into(holder.thumbnail)
+            if (context != null) {
+                Glide.with(context).load(news.get(position).image_url).into(holder.thumbnail)
+            }
         }
 
         holder.itemView.setOnClickListener {

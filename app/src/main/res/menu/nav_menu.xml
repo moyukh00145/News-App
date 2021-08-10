@@ -1,30 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/group1">
-
-    </group>
 
     <group
         android:id="@+id/group2"
         android:checkableBehavior="single">
+
+        <item android:id="@+id/home"
+            android:title="Home"/>
+
         <item
             android:id="@+id/subtitle"
-            android:title="Subtitle"
+            android:title="Etertainment"
             android:checkableBehavior="single">
             <menu>
-                <item
-                    android:id="@+id/item4"
-                    android:icon="@drawable/setting"
-                    android:title="Item 4" />
+                <group android:id="@+id/inner"
+                    android:checkableBehavior="single">
 
-                <item
-                    android:id="@+id/item5"
-                    android:icon="@drawable/setting"
-                    android:title="Item 5" />
+                    <item
+                        android:id="@+id/movies"
+                        android:icon="@drawable/setting"
+                        android:title="Movies" />
+
+                    <item
+                        android:id="@+id/bollywood"
+                        android:icon="@drawable/setting"
+                        android:title="Bollywood" />
+
+                    <item
+                        android:id="@+id/item6"
+                        android:icon="@drawable/setting"
+                        android:title="Hollywood" />
+
+                </group>
 
             </menu>
         </item>
+        <item android:id="@+id/Business"
+            android:title="Business">
+
+            <menu>
+                <group android:id="@+id/Business_menu">
+
+                    <item android:id="@+id/Market"
+                        android:icon="@drawable/setting"
+                        android:title="Market">
+                    </item>
+                    <item android:id="@+id/Industry"
+                        android:icon="@drawable/setting"
+                        android:title="Industry"/>
+
+                </group>
+            </menu>
+
+        </item>
+        <item android:id="@+id/sports"
+            android:title="Sports"></item>
+
+        <item android:id="@+id/science"
+            android:title="Science"/>
+        <item android:title="Technology"
+            android:id="@+id/technology"/>
+
+        <item android:title="Health"
+            android:id="@+id/health"/>
     </group>
 
 </menu>
