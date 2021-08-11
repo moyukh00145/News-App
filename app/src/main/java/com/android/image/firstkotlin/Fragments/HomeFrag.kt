@@ -48,8 +48,8 @@ class HomeFrag() : Fragment() {
     {
         Log.w("getNews","called")
 
-//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey="
-        val url="https://newsapi.org/v2/everything?q=India&apiKey="
+//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey=69c9b953a09745ec8daa0334191f26c0"
+        val url="https://newsapi.org/v2/everything?q=India&apiKey=69c9b953a09745ec8daa0334191f26c0"
         val jsonObjectRequest =object : JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->

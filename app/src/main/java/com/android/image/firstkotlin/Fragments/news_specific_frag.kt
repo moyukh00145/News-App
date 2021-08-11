@@ -46,20 +46,26 @@ class news_specific_frag(c:Context) : Fragment() {
         return view
     }
 
-    fun setData(selection:String){
+    fun setData(selection:String,check:Boolean){
 
         if (this::reecycle.isInitialized&&this::progressBar.isInitialized){
             reecycle.visibility=View.GONE
             progressBar.visibility=View.VISIBLE
         }
+        if (check){
+            getNews("https://newsapi.org/v2/everything?q=" + selection + "&apiKey=69c9b953a09745ec8daa0334191f26c0")
 
-         getNews("https://newsapi.org/v2/top-headlines?country=in&category="+selection+"&apiKey=")
+        }
+        else {
+
+            getNews("https://newsapi.org/v2/top-headlines?country=in&category=" + selection + "&apiKey=69c9b953a09745ec8daa0334191f26c0")
+        }
     }
 
     fun getNews(news_url:String) {
         Log.w("getNews","calledfrag")
 
-//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey="
+//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey=69c9b953a09745ec8daa0334191f26c0"
         val jsonObjectRequest =object : JsonObjectRequest(
             Request.Method.GET, news_url, null,
             { response ->

@@ -26,85 +26,26 @@
                 android:background="@android:color/transparent"
                 android:elevation="0dp"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:menu="@menu/main_menu"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
                 app:title="@string/top_app_bar"
-                app:titleTextColor="@color/textColor"/>
+                app:titleTextColor="@color/textColor" />
+
+
         </com.google.android.material.appbar.AppBarLayout>
 
-<!--        <androidx.core.widget.NestedScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
 
-<!--           <LinearLayout-->
-<!--               android:layout_width="match_parent"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:orientation="vertical">-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/search_list"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:visibility="gone"/>
 
-<!--&lt;!&ndash;               <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
-<!--&lt;!&ndash;                   android:id="@+id/news_recycler_view"&ndash;&gt;-->
-<!--&lt;!&ndash;                   android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                   android:layout_height="match_parent" />&ndash;&gt;-->
-
-               <FrameLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:id="@+id/frame_container"/>
-
-<!--               <com.google.android.material.divider.MaterialDivider-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="10dp"/>-->
-
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_margin="5dp"-->
-<!--                   android:padding="10dp"-->
-<!--                   android:text="moyukh00145@gmail.com"-->
-<!--                   android:textColor="@color/textColor"-->
-<!--                   android:textSize="15dp" />-->
-<!--           </LinearLayout>-->
-
-<!--        </androidx.core.widget.NestedScrollView>-->
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

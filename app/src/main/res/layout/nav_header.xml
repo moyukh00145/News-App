@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/header_design"
     android:fitsSystemWindows="true"
-    android:background="@drawable/header_design">
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8pt"
         android:layout_marginLeft="8pt"
+        android:layout_marginTop="8pt"
         android:scaleType="centerCrop"
-        android:src="@drawable/setting"/>
+        android:src="@drawable/setting" />
 
     <LinearLayout
+        android:id="@+id/dropContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/dropContainer">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="4"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:textColor="@color/textColor"
+            android:layout_weight="4"
+            android:text="Name"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            android:text="Name" />
+            android:textColor="@color/textColor" />
 
         <ImageView
             android:id="@+id/drop_button"
@@ -46,37 +45,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Email"
         android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@color/material_on_surface_emphasis_medium"
-        android:text="Email" />
+        android:textColor="@color/material_on_surface_emphasis_medium" />
 
     <LinearLayout
+        android:id="@+id/option_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:id="@+id/option_lay"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
+            android:id="@+id/profile_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:src="@drawable/profile" />
 
         <ImageView
+            android:id="@+id/setting"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:src="@drawable/setting" />
 
         <ImageView
+            android:id="@+id/log_out"
             android:layout_width="30dp"
-            android:layout_weight="1"
             android:layout_height="30dp"
+            android:layout_weight="1"
             android:src="@drawable/log_out" />
 
     </LinearLayout>
