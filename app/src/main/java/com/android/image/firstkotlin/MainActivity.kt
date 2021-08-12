@@ -17,13 +17,11 @@ import androidx.fragment.app.FragmentManager
 import com.android.image.firstkotlin.Fragments.HomeFrag
 import com.android.image.firstkotlin.Fragments.Search_list_frag
 import com.android.image.firstkotlin.Fragments.news_specific_frag
+import com.android.image.firstkotlin.Interfaces.OnNewsSelected
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
-    //    val newsList= ArrayList<String>()
-//    lateinit var adapter:NewsAdapter
     lateinit var search_list: ListView
     lateinit var adapter: ArrayAdapter<String>
     lateinit var topic_name: ArrayList<String>
@@ -33,18 +31,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val frameLayout:FrameLayout=findViewById(R.id.frame_container)
+        val frameLayout: FrameLayout = findViewById(R.id.frame_container)
 
-        search_list=findViewById(R.id.search_list)
-        topic_name= ArrayList()
-        topic_name.add("moyukh")
-        topic_name.add("Moyukh")
-        topic_name.add("Dipa")
-        topic_name.add("dipa")
-//        topic_name.add("Priyangshu")
-        topic_name.add("priyangshu")
-        adapter= ArrayAdapter(this,android.R.layout.simple_list_item_1,topic_name)
-        search_list.adapter=adapter
+        search_list = findViewById(R.id.search_list)
+        topic_name = ArrayList()
+        topic_name.add("Market")
+        topic_name.add("Stock")
+        topic_name.add("Bitcoin")
+        topic_name.add("Prime minister")
+        topic_name.add("Narendra Modi")
+        topic_name.add("politics")
+        topic_name.add("Election")
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, topic_name)
+        search_list.adapter = adapter
 
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(
@@ -77,38 +76,53 @@ class MainActivity : AppCompatActivity() {
                 R.id.movies -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
-                    specific_frag.setData("entertainment",false)
+                    specific_frag.setData("entertainment", false)
+                }
+                R.id.Industry->{
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                        .commit();
+                    specific_frag.setData("Sensex", true)
+                }
+                R.id.Market->{
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                        .commit();
+                    specific_frag.setData("Stock Market", true)
                 }
                 R.id.sports -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
-                    specific_frag.setData("sports",false)
+                    specific_frag.setData("sports", false)
                 }
                 R.id.science -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
-                    specific_frag.setData("science",false)
+                    specific_frag.setData("science", false)
                 }
                 R.id.technology -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
-                    specific_frag.setData("technology",false)
+                    specific_frag.setData("technology", false)
                 }
                 R.id.health -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
-                    specific_frag.setData("health",false)
+                    specific_frag.setData("health", false)
+                }
+                R.id.bollywood->{
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                        .commit();
+                    specific_frag.setData("Indian Bollywood cinema", true)
+                }
+                R.id.hollywood->{
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                        .commit();
+                    specific_frag.setData("Hollywood cinema", true)
                 }
             }
 
             drawerLayout.closeDrawer(Gravity.LEFT)
             true
         }
-
-//        getNews()
-//        adapter=NewsAdapter(this,newsList)
-//        news_recycler_view.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-//        news_recycler_view.adapter=adapter
 
         val v: View = navigationView.getHeaderView(0)
 
@@ -154,35 +168,31 @@ class MainActivity : AppCompatActivity() {
 
         menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
-                Log.w("MenuItem", "expand")
-//                fragmentManager.beginTransaction().replace(R.id.frame_container, searchListFrag)
-//                    .commit()
-                frameLayout.visibility=View.GONE
-                search_list.visibility=View.VISIBLE
+                frameLayout.visibility = View.GONE
+                search_list.visibility = View.VISIBLE
 
                 return true
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                Log.w("MenuItem", "Collapse")
-//                fragmentManager.beginTransaction().replace(R.id.frame_container, homeFrag).commit();
-                search_list.visibility=View.GONE
-                frameLayout.visibility=View.VISIBLE
+                search_list.visibility = View.GONE
+                frameLayout.visibility = View.VISIBLE
                 return true
             }
 
         })
 
-        val searchView:SearchView= menuItem.actionView as SearchView
-        searchView.isSubmitButtonEnabled=true
-        searchView.queryHint="Search topic of News"
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+        val searchView: SearchView = menuItem.actionView as SearchView
+        searchView.isSubmitButtonEnabled = true
+        searchView.queryHint = "Search topic of News"
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.w("search","selected")
+                Log.w("search", "selected")
 
                 if (query != null) {
-                    fragmentManager.beginTransaction().replace(R.id.frame_container,specific_frag).commit()
-                    specific_frag.setData(query,true)
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                        .commit()
+                    specific_frag.setData(query, true)
                 }
                 menuItem.collapseActionView()
                 return true
@@ -190,61 +200,25 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
 
-                    adapter.filter.filter(newText)
+                adapter.filter.filter(newText)
 
                 return true
             }
 
         })
 
+        search_list.onItemClickListener=object :AdapterView.OnItemClickListener{
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
+                    .commit()
+                specific_frag.setData(topic_name.get(p2), true)
+                menuItem.collapseActionView()
+            }
+
+        }
+
 
     }
 
-//    fun getNews()
-//    {
-//        Log.w("getNews","called")
-//
-//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey=69c9b953a09745ec8daa0334191f26c0"
-//        val jsonObjectRequest =object :JsonObjectRequest(
-//            Request.Method.GET, url, null,
-//            { response ->
-//
-//               if(response!=null){
-//                   val jsonArray=response.getJSONArray("articles");
-//
-//
-//                   for (i in 0 until jsonArray.length()){
-//                       val jsonObject:JSONObject= jsonArray[i] as JSONObject
-//                       val news=News(jsonObject.getString("title"),jsonObject.getString("description"),jsonObject.getString("urlToImage")
-//                           ,jsonObject.getString("url"),jsonObject.getString("publishedAt"),jsonObject.getString("author"))
-//                       newsList.add(news)
-//                   }
-//
-//                   adapter.notifyDataSetChanged()
-//               }
-//                else{
-//                    Log.w("response","failed")
-//               }
-//
-//            },
-//            { error ->
-//
-//                Log.w("error",error.localizedMessage)
-//
-//            }
-//        )
-//
-//
-//        {
-//            override fun getHeaders(): MutableMap<String, String> {
-//
-//                val headers = HashMap<String, String>()
-//                headers["User-Agent"]="Mozilla/5.0"
-//                return headers
-//            }
-//        }
-//        NewsNetowerk.getInstance(this).addToRequestQueue(jsonObjectRequest)
-//
-//    }
 
 }

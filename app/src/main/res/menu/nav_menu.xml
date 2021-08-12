@@ -28,7 +28,7 @@
                         android:title="Bollywood" />
 
                     <item
-                        android:id="@+id/item6"
+                        android:id="@+id/hollywood"
                         android:icon="@drawable/setting"
                         android:title="Hollywood" />
 
@@ -38,7 +38,6 @@
         </item>
         <item android:id="@+id/Business"
             android:title="Business">
-
             <menu>
                 <group android:id="@+id/Business_menu">
 
@@ -46,9 +45,10 @@
                         android:icon="@drawable/setting"
                         android:title="Market">
                     </item>
+
                     <item android:id="@+id/Industry"
                         android:icon="@drawable/setting"
-                        android:title="Industry"/>
+                        android:title="Sensex"/>
 
                 </group>
             </menu>

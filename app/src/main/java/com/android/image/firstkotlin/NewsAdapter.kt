@@ -12,9 +12,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.android.image.firstkotlin.Interfaces.OnNewsSelected
 import com.bumptech.glide.Glide
 
-class NewsAdapter(val context: Context?,val news:ArrayList<News>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(val context: Context?,val news:ArrayList<News>,val newsSelected: OnNewsSelected) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+
+
 
     inner class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -76,8 +79,7 @@ class NewsAdapter(val context: Context?,val news:ArrayList<News>) : RecyclerView
         }
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, "clicked item position = " + position, Toast.LENGTH_SHORT)
-                .show()
+           newsSelected.newsSelected(news.get(position).news_url)
         }
     }
 

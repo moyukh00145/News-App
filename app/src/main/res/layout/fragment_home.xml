@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".Fragments.HomeFrag">
 
@@ -14,19 +15,27 @@
 
 
 
+    <ProgressBar
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/home_progress"
+        android:layout_gravity="center_horizontal"/>
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll_view"
+        android:visibility="gone">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                           <androidx.recyclerview.widget.RecyclerView
-                               android:id="@+id/news_recycler_view"
-                               android:layout_width="match_parent"
-                               android:layout_height="match_parent" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -84,5 +93,7 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+
 
 </LinearLayout>

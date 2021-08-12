@@ -3,21 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_vertical"
+    android:orientation="vertical"
     tools:context=".Fragments.news_specific_frag">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/news_recycler_view"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <ProgressBar
+        android:id="@+id/prog_bar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/prog_bar"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/no_element_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColor"
+        android:text="Nothing found on this topic"
+        android:textSize="15dp"
+         android:visibility="gone"/>
 
 
 </LinearLayout>
