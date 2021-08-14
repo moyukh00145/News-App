@@ -9,6 +9,9 @@
         <item android:id="@+id/home"
             android:title="Home"/>
 
+        <item android:id="@+id/for_you"
+            android:title="For you"/>
+
         <item
             android:id="@+id/subtitle"
             android:title="Etertainment"
@@ -54,6 +57,9 @@
             </menu>
 
         </item>
+        <item android:title="Weather"
+            android:id="@+id/weather"/>
+
         <item android:id="@+id/sports"
             android:title="Sports"></item>
 

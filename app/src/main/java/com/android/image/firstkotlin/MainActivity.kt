@@ -1,10 +1,9 @@
 package com.android.image.firstkotlin
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
 import android.util.Log
 import android.view.Gravity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
@@ -15,9 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentManager
 import com.android.image.firstkotlin.Fragments.HomeFrag
-import com.android.image.firstkotlin.Fragments.Search_list_frag
+import com.android.image.firstkotlin.Fragments.ProfileFrag
 import com.android.image.firstkotlin.Fragments.news_specific_frag
-import com.android.image.firstkotlin.Interfaces.OnNewsSelected
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +24,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var adapter: ArrayAdapter<String>
     lateinit var topic_name: ArrayList<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
 
         val frameLayout: FrameLayout = findViewById(R.id.frame_container)
@@ -78,12 +78,12 @@ class MainActivity : AppCompatActivity() {
                         .commit();
                     specific_frag.setData("entertainment", false)
                 }
-                R.id.Industry->{
+                R.id.Industry -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
                     specific_frag.setData("Sensex", true)
                 }
-                R.id.Market->{
+                R.id.Market -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
                     specific_frag.setData("Stock Market", true)
@@ -108,12 +108,12 @@ class MainActivity : AppCompatActivity() {
                         .commit();
                     specific_frag.setData("health", false)
                 }
-                R.id.bollywood->{
+                R.id.bollywood -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
                     specific_frag.setData("Indian Bollywood cinema", true)
                 }
-                R.id.hollywood->{
+                R.id.hollywood -> {
                     fragmentManager.beginTransaction().replace(R.id.frame_container, specific_frag)
                         .commit();
                     specific_frag.setData("Hollywood cinema", true)
@@ -131,6 +131,7 @@ class MainActivity : AppCompatActivity() {
         val profile_btn: ImageView = v.findViewById(R.id.profile_btn)
         val setting_btn: ImageView = v.findViewById(R.id.setting)
         val log_out: ImageView = v.findViewById(R.id.log_out)
+        val signup: Button = v.findViewById(R.id.sign_in)
 
         image_btn.setOnClickListener {
 
@@ -149,15 +150,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         profile_btn.setOnClickListener {
+            drawerLayout.closeDrawer(Gravity.LEFT)
             Toast.makeText(this, "Profile section", Toast.LENGTH_SHORT).show()
+            val profileFrag:ProfileFrag= ProfileFrag()
+            fragmentManager.beginTransaction().replace(R.id.frame_container, profileFrag).commit()
+
+        }
+
+        signup.setOnClickListener {
+
+            val intent=Intent(this,SecondActivity::class.java)
+            startActivity(intent)
         }
 
         setting_btn.setOnClickListener {
             Toast.makeText(this, "Setting section", Toast.LENGTH_SHORT).show()
+            drawerLayout.closeDrawer(Gravity.LEFT)
         }
 
         log_out.setOnClickListener {
             Toast.makeText(this, "logged out", Toast.LENGTH_SHORT).show()
+            drawerLayout.closeDrawer(Gravity.LEFT)
         }
 
         menuItem.setOnMenuItemClickListener {

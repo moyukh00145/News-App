@@ -1,10 +1,35 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="chipStyle">@style/Widget.App.Chip</item>
+
+    </style>
+
+
+    <style name="Widget.App.Chip" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Chip</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body2</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        ...
+    </style>
+
+    <style name="ThemeOverlay.App.Chip" parent="">
+        <item name="colorOnSurface">#2196F3</item>
+        <item name="colorPrimary">#E040FB</item>
+    </style>
+
+    <style name="TextAppearance.App.Body2" parent="TextAppearance.MaterialComponents.Body2">
+
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">4dp</item>
     </style>
 
 </resources>

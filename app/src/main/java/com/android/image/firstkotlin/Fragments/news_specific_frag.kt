@@ -1,6 +1,8 @@
 package com.android.image.firstkotlin.Fragments
 
 import android.content.Context
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.browser.customtabs.CustomTabColorSchemeParams
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.image.firstkotlin.Interfaces.OnNewsSelected
@@ -40,10 +44,18 @@ class news_specific_frag(c:Context) : Fragment() {
         onNewsSelected=object : OnNewsSelected{
             override fun newsSelected(url: String?) {
                 if (url != null) {
-                    Log.w("url",url)
+                    val customTabsIntentBuilder: CustomTabsIntent.Builder= CustomTabsIntent.Builder()
 
 
+                    val colorInt: Int = Color.parseColor("#ffcc80")
 
+                    val defaultColors = CustomTabColorSchemeParams.Builder()
+                        .setToolbarColor(colorInt)
+                        .build()
+                    customTabsIntentBuilder.setDefaultColorSchemeParams(defaultColors)
+
+                    val customTabsIntent: CustomTabsIntent =customTabsIntentBuilder.build()
+                    customTabsIntent.launchUrl(view.context, Uri.parse(url))
 
                 }
             }
@@ -152,19 +164,6 @@ class news_specific_frag(c:Context) : Fragment() {
         }
     }
 
-    override fun onPause() {
-        Log.w("onPause","called")
-        super.onPause()
-    }
 
-    override fun onResume() {
-        Log.w("onResume","called")
-        super.onResume()
-    }
-
-    override fun onStart() {
-        Log.w("onstart","called")
-        super.onStart()
-    }
 
 }

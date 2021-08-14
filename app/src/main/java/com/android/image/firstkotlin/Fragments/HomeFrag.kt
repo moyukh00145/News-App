@@ -44,11 +44,11 @@ class HomeFrag() : Fragment() {
         scrollView=v.findViewById(R.id.scroll_view)
 
         onNewsSelected=object : OnNewsSelected{
-            override fun newsSelected(url: String?) {
+            override fun newsSelected(url: String?)
+            {
                 if (url != null) {
 
                     val customTabsIntentBuilder:CustomTabsIntent.Builder=CustomTabsIntent.Builder()
-
 
                     val colorInt: Int = Color.parseColor("#ffcc80")
 
@@ -58,6 +58,7 @@ class HomeFrag() : Fragment() {
                     customTabsIntentBuilder.setDefaultColorSchemeParams(defaultColors)
 
                     val customTabsIntent:CustomTabsIntent=customTabsIntentBuilder.build()
+                    
                     customTabsIntent.launchUrl(v.context, Uri.parse(url))
 
                 }
@@ -82,15 +83,14 @@ class HomeFrag() : Fragment() {
     {
         Log.w("getNews", "called")
 
-//        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey=69c9b953a09745ec8daa0334191f26c0"
-        val url="https://newsapi.org/v2/everything?q=India&apiKey=69c9b953a09745ec8daa0334191f26c0"
+        val url="https://newsapi.org/v2/top-headlines?country=in&apiKey=69c9b953a09745ec8daa0334191f26c0"
+//        val url="https://newsapi.org/v2/everything?q=India&apiKey=69c9b953a09745ec8daa0334191f26c0"
         val jsonObjectRequest =object : JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->
 
                 if (response != null) {
-                    val jsonArray = response.getJSONArray("articles");
-
+                    val jsonArray = response.getJSONArray("articles")
 
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject: JSONObject = jsonArray[i] as JSONObject
