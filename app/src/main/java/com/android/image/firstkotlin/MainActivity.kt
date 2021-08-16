@@ -16,20 +16,31 @@ import androidx.fragment.app.FragmentManager
 import com.android.image.firstkotlin.Fragments.HomeFrag
 import com.android.image.firstkotlin.Fragments.ProfileFrag
 import com.android.image.firstkotlin.Fragments.news_specific_frag
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var search_list: ListView
     lateinit var adapter: ArrayAdapter<String>
     lateinit var topic_name: ArrayList<String>
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db:FirebaseFirestore
+    lateinit var user_show_name:TextView
+    lateinit var user_show_email:TextView
+    lateinit var name:String
+    lateinit var mail:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        auth= FirebaseAuth.getInstance()
+        db= FirebaseFirestore.getInstance()
 
         val frameLayout: FrameLayout = findViewById(R.id.frame_container)
 
@@ -118,20 +129,54 @@ class MainActivity : AppCompatActivity() {
                         .commit();
                     specific_frag.setData("Hollywood cinema", true)
                 }
+                R.id.for_you->{
+                    if (auth.currentUser!=null){
+
+                    }
+                    else{
+                        val intent=Intent(this,SecondActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
             }
 
             drawerLayout.closeDrawer(Gravity.LEFT)
             true
         }
 
-        val v: View = navigationView.getHeaderView(0)
 
+        val v: View = navigationView.getHeaderView(0)
         val image_btn: ImageView = v.findViewById(R.id.drop_button)
         val btn_view: View = v.findViewById<LinearLayout>(R.id.option_lay)
         val profile_btn: ImageView = v.findViewById(R.id.profile_btn)
         val setting_btn: ImageView = v.findViewById(R.id.setting)
         val log_out: ImageView = v.findViewById(R.id.log_out)
         val signup: Button = v.findViewById(R.id.sign_in)
+        user_show_name=v.findViewById(R.id.user_show_name)
+        user_show_email=v.findViewById(R.id.user_show_email)
+
+        if (auth.currentUser!=null){
+
+            db.collection("Users").document(auth.currentUser!!.uid).get().addOnSuccessListener {
+
+                if (it.exists()){
+                   name= it.get("name") as String
+                    mail=it.get("email") as String
+
+                    signup.visibility=View.GONE
+                    user_show_name.text="Welcome $name"
+                    user_show_email.text=mail
+                    user_show_email.visibility=View.VISIBLE
+
+                }
+
+            }.addOnFailureListener{
+
+            }
+
+
+
+        }
 
         image_btn.setOnClickListener {
 
@@ -165,11 +210,22 @@ class MainActivity : AppCompatActivity() {
 
         setting_btn.setOnClickListener {
             Toast.makeText(this, "Setting section", Toast.LENGTH_SHORT).show()
+            val intent=Intent(this,SettingActivity::class.java)
+            startActivity(intent)
             drawerLayout.closeDrawer(Gravity.LEFT)
         }
 
         log_out.setOnClickListener {
-            Toast.makeText(this, "logged out", Toast.LENGTH_SHORT).show()
+            if (auth.currentUser!=null){
+                user_show_email.visibility=View.GONE
+                user_show_name.text="Welcome User"
+                signup.visibility=View.VISIBLE
+                auth.signOut()
+
+            }
+            else{
+                Toast.makeText(this, "you don't have account", Toast.LENGTH_SHORT).show()
+            }
             drawerLayout.closeDrawer(Gravity.LEFT)
         }
 
@@ -207,6 +263,8 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     specific_frag.setData(query, true)
                 }
+
+                auth.currentUser?.let { db.collection("Users").document(it.uid).update("choise_topics",FieldValue.arrayUnion()) }
                 menuItem.collapseActionView()
                 return true
             }

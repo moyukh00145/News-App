@@ -23,7 +23,7 @@
                     <item
                         android:id="@+id/movies"
                         android:icon="@drawable/setting"
-                        android:title="Movies" />
+                        android:title="All" />
 
                     <item
                         android:id="@+id/bollywood"

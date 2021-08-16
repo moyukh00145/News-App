@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/sign_parent"
     android:orientation="vertical"
     tools:context=".SecondActivity">
 
@@ -38,6 +39,7 @@
         app:layout_constraintVertical_bias="0.23" />
 
     <TextView
+        android:id="@+id/Welcome_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -53,126 +55,166 @@
 
 
     <LinearLayout
+        android:id="@+id/sign_lay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/sign_lay"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5">
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.246">
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField1"
+            android:id="@+id/Sign_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:hint="Name"
+            android:visibility="gone"
             app:boxStrokeColor="@color/colorPrimaryDark"
-            app:helperTextEnabled="true"
-            app:helperText="*Required"
             app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="*Required"
+            app:helperTextEnabled="true"
             app:hintTextColor="@color/colorPrimaryDark">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
+            android:id="@+id/Sign_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="30dp"
             android:hint="Email"
-            app:helperTextEnabled="true"
-            app:helperText="*Required"
             app:boxStrokeColor="@color/colorPrimaryDark"
             app:endIconMode="clear_text"
+            app:helperText="*Required"
+            app:helperTextEnabled="true"
             app:hintTextColor="@color/colorPrimaryDark">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField3"
+            android:id="@+id/Password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="5dp"
             android:hint="Password"
-            android:layout_marginHorizontal="30dp"
             app:boxStrokeColor="@color/colorPrimaryDark"
-            app:hintTextColor="@color/colorPrimaryDark"
             app:endIconMode="password_toggle"
-            android:layout_marginTop="10dp">
+            app:hintTextColor="@color/colorPrimaryDark">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass_edit"
                 android:layout_width="match_parent"
-                android:inputType="textPassword"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField4"
+            android:id="@+id/Confirm_pass"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"
             android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="5dp"
+            android:hint="Confirm Password"
+            android:visibility="gone"
             app:boxStrokeColor="@color/colorPrimaryDark"
-            app:hintTextColor="@color/colorPrimaryDark"
             app:endIconMode="password_toggle"
-            android:layout_marginTop="10dp">
+            app:errorEnabled="true"
+            app:hintTextColor="@color/colorPrimaryDark">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirm_edit"
                 android:layout_width="match_parent"
-                android:inputType="textPassword"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="8dp"
             android:text="Sign in"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textSize="20dp" />
 
+        <ProgressBar
+            android:id="@+id/sign_progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/change_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="New User ? Sign Up"
+            android:textColor="@color/textColor"
+            android:textColorLink="#66F8FB"
+            android:textSize="20dp" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="New User ? Sign Up"
-        android:textColor="@color/textColor"
-        android:textColorLink="#66F8FB"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_lay"
-        app:layout_constraintVertical_bias="0.156" />
+    <!--    <TextView-->
+<!--        android:id="@+id/change_signup"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:text="New User ? Sign Up"-->
+<!--        android:textColor="@color/textColor"-->
+<!--        android:textColorLink="#66F8FB"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.527"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/sign_lay"-->
+<!--        app:layout_constraintVertical_bias="0.907" />-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/sign_progress"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/change_signup"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/sign_lay"-->
+<!--        app:layout_constraintVertical_bias="0.346" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

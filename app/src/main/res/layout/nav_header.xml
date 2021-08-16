@@ -26,6 +26,7 @@
             android:layout_marginVertical="10dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:id="@+id/user_show_name"
             android:layout_weight="4"
             android:text="Welcome User"
             android:textAppearance="?attr/textAppearanceHeadline6"
@@ -57,6 +58,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
+        android:id="@+id/user_show_email"
         android:text=""
         android:visibility="gone"
         android:textAppearance="?attr/textAppearanceBody2"
@@ -92,5 +94,7 @@
             android:src="@drawable/log_out" />
 
     </LinearLayout>
+
+
 
 </LinearLayout>
